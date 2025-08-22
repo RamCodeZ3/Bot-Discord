@@ -2,12 +2,15 @@ import discord
 from dotenv import load_dotenv
 import os
 from discord.ext import commands
+import asyncio
+
 
 load_dotenv()
 TOKEN = os.getenv("TOKEN")
 
 intents = discord.Intents.default()
 intents.message_content = True
+intents.members = True 
 
 bot = commands.Bot(command_prefix="/", intents=intents)
 
@@ -16,4 +19,15 @@ async def on_ready():
     print(f'Bot conectado {bot.user}')
 
 
-bot.run(TOKEN)
+async def load_cogs():
+    for filename in os.listdir("./cogs"):
+        if filename.endswith(".py"):
+            await bot.load_extension(f"cogs.{filename[:-3]}")
+
+
+async def main():
+    async with bot:
+        await load_cogs()
+        await bot.start(TOKEN)
+
+asyncio.run(main())
