@@ -24,7 +24,13 @@ class Command(commands.Cog):
     name="setwelcome",
     description="Comando para configurar el mensaje de entrada"
     )
-    async def setwelcome(self, interaction: discord.Interaction, *, mensaje: str):
+    @commands.has_permissions(administrator=True)
+    async def setwelcome(
+        self,
+        interaction: discord.Interaction,
+        *,
+        mensaje: str):
+
         guild_id = str(interaction.guild.id)
         if guild_id not in self.guild_settings:
             self.guild_settings[guild_id] = {}
@@ -37,7 +43,12 @@ class Command(commands.Cog):
     description="Comando para configurar el mensaje de salida"
     )
     @commands.has_permissions(administrator=True)
-    async def setgoodbye(self, interaction: discord.Interaction, *, mensaje: str):
+    async def setgoodbye(
+        self,
+        interaction: discord.Interaction,
+        *,
+        mensaje: str):
+        
         guild_id = str(interaction.guild.id)
         if guild_id not in self.guild_settings:
             self.guild_settings[guild_id] = {}
