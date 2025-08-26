@@ -18,6 +18,12 @@ bot = commands.Bot(command_prefix="/", intents=intents)
 async def on_ready():
     print(f'Bot conectado y funcionado {bot.user}')
 
+    try:
+        synced = await bot.tree.sync()
+        print(f"{len(synced)} Slash Commands sincronizados")
+    except Exception as e:
+        print(e)
+
 
 async def load_cogs():
     for filename in os.listdir("./cogs"):
