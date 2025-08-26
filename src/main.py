@@ -7,6 +7,7 @@ import asyncio
 
 load_dotenv()
 TOKEN = os.getenv("TOKEN")
+COGS_DIR = os.path.join(os.path.dirname(__file__), "cogs")
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -26,7 +27,7 @@ async def on_ready():
 
 
 async def load_cogs():
-    for filename in os.listdir("./cogs"):
+    for filename in os.listdir(COGS_DIR):
         if filename.endswith(".py") and filename != '__init__.py':
             await bot.load_extension(f"cogs.{filename[:-3]}")
 

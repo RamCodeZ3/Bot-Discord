@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from src.function_json import load_settings
+from function_json import load_settings
 
 class Event(commands.Cog):
     def __init__(self, bot):
@@ -12,7 +12,7 @@ class Event(commands.Cog):
         guild_id = str(member.guild.id)
         welcome_msg = settings.get(guild_id, {}).get(
             "welcome",
-            f"👋 Bienvenido {member.name} :D")
+            f"Bienvenido {member.name} :D")
         if member.guild.system_channel:
             await member.guild.system_channel.send(
                 welcome_msg.replace(
@@ -25,7 +25,7 @@ class Event(commands.Cog):
         guild_id = str(member.guild.id)
         goodbye_msg = settings.get(guild_id, {}).get(
             "goodbye",
-            f" Adiós {member.name} :c")
+            f"Adiós {member.name} :c")
         
         if member.guild.system_channel:
             await member.guild.system_channel.send(
