@@ -13,6 +13,26 @@ Los mensajes son **personalizables por cada servidor**, permitiendo a los admini
 - ✅ Uso de **slash commands** (`/comandos`).  
 
 ---
+## 📜 Comandos disponibles  
+
+### `/presentation`  
+Muestra una presentación del bot.  
+
+---
+
+### `/setwelcome <mensaje>`  
+Configura el mensaje de **bienvenida** del servidor.  
+Puedes usar **{user}** para mencionar al usuario.  
+
+### `/setgoodbye <mensaje>`  
+Configura el mensaje de **despedida** del servidor.  
+Puedes usar **{user}** para mencionar al usuario.  
+
+**Ejemplo:**  
+    ```/setwelcome Bienvenido {user}, disfruta tu estadía``` 🚀 <br/>
+     ```/setgoodbye Adios {user}, te extrañaremos :c```
+     
+---
 ## 📂 Estructura del proyecto  
 📦 Bot-Discord <br/>
 ┣ 📂 data <br/>
